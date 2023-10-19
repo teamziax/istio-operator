@@ -10980,20 +10980,20 @@ spec:
         olm.relatedImage.v2_4.proxyv2: quay.io/maistra/proxyv2-ubi8:2.4.0
         olm.relatedImage.v2_4.rls: quay.io/maistra/ratelimit-ubi8:2.4.0
 
-        olm.relatedImage.v2_5.cni: ghcr.io/teamziax/install-cni:2.5.0
+        olm.relatedImage.v2_5.cni: ghcr.io/teamziax/istio/install-cni:2.5.0
         # Grafana version 8 and above doesn't seem to be compatible with the way credentials are passed through.
         olm.relatedImage.v2_5.grafana: grafana/grafana:7.5.15
-        olm.relatedImage.v2_5.pilot: ghcr.io/teamziax/pilot:2.5.0
+        olm.relatedImage.v2_5.pilot: ghcr.io/teamziax/istio/pilot:2.5.0
         olm.relatedImage.v2_5.prometheus: quay.io/prometheus/prometheus:v2.43.1
         olm.relatedImage.v2_5.prometheus-config-reloader: quay.io/prometheus-operator/prometheus-config-reloader:v0.66.0
-        olm.relatedImage.v2_5.proxyv2: ghcr.io/teamziax/proxyv2:2.5.0
+        olm.relatedImage.v2_5.proxyv2: ghcr.io/teamziax/istio/proxyv2:2.5.0
         olm.relatedImage.v2_5.rls: envoyproxy/ratelimit:b9796237
 
     spec:
       serviceAccountName: istio-operator
       containers:
       - name: istio-operator
-        image: ghcr.io/teamziax/istio-operator:2.5.0
+        image: ghcr.io/teamziax/istio-operator/istio-operator:2.5.0
         ports:
         - containerPort: 11999
           name: validation
