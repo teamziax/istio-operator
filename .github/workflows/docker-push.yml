@@ -7,7 +7,6 @@ on:
 
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-  TAG: ${{ github.ref#refs/tags/ }}
 
 jobs:
   docker_push:
@@ -16,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Get Tag
+        run: echo ::set-output name=TAG::${GITHUB_REF#refs/tags/}
       - name: Login to Docker Hub as ${{ env.DOCKERHUB_USERNAME }}
         uses: docker/login-action@v3
         with:
