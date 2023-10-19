@@ -8,7 +8,6 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
   TAG: ${{ github.ref/refs\/tags\// }}
-  IMAGE: ${{ env.DOCKERHUB_USERNAME }}/istio-operator:${{ env.TAG }}
 
 jobs:
   docker_push:
@@ -22,7 +21,7 @@ jobs:
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build Image ${{ env.IMAGE }}
-        run: IMAGE=docker.io/${{ env.IMAGE }} make image
-      - name: Push Image ${{ env.IMAGE }}
-        run: docker push docker.io/${{ env.IMAGE }}
+      - name: Build Image ${{ env.DOCKERHUB_USERNAME }}/istio-operator:${{ env.TAG }}
+        run: IMAGE=docker.io/${{ env.DOCKERHUB_USERNAME }}/istio-operator:${{ env.TAG }} make image
+      - name: Push Image ${{ env.DOCKERHUB_USERNAME }}/istio-operator:${{ env.TAG }}
+        run: docker push docker.io/${{ env.DOCKERHUB_USERNAME }}/istio-operator:${{ env.TAG }}
