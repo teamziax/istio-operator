@@ -7,7 +7,7 @@ on:
 
 env:
   DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-  TAG: ${{ github.ref/refs\/tags\// }}
+  TAG: ${{ github.ref#refs/tags/ }}
 
 jobs:
   docker_push:
