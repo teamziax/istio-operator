@@ -19,5 +19,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: IMAGE=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/istio-operator:latest make image
-      - run: docker push docker.io/${{ secrets.DOCKERHUB_USERNAME }}/istio-operator:${{ github.ref }}
+      - name: Build Image
+        run: IMAGE=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/istio-operator:latest make image
+      - name: Push Image
+        run: docker push docker.io/${{ secrets.DOCKERHUB_USERNAME }}/istio-operator:${{ github.ref }}
